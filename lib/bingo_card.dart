@@ -1,9 +1,21 @@
+import 'dart:developer';
+
 import 'package:bingo_tool/cell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BingoCard extends StatelessWidget {
-  const BingoCard({Key? key}) : super(key: key);
+  late List<List<Cell>> _cells;
+
+  BingoCard(List<List<int>> numbers, {Key? key}) : super(key: key) {
+    _cells = List.generate(5, (_) => List.generate(5, (_) => Cell(0)));
+    for (var values in numbers) {
+      var index = numbers.indexOf(values);
+      log(index.toString());
+      var cells = values.map((e) => Cell(e));
+      _cells[index] = cells.toList();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,33 +29,7 @@ class BingoCard extends StatelessWidget {
         mainAxisSpacing: 5,
         crossAxisSpacing: 5,
         padding: const EdgeInsets.all(5),
-        children: [
-          Cell(1),
-          Cell(2),
-          Cell(3),
-          Cell(4),
-          Cell(5),
-          Cell(6),
-          Cell(7),
-          Cell(8),
-          Cell(9),
-          Cell(10),
-          Cell(11),
-          Cell(12),
-          Cell(13),
-          Cell(14),
-          Cell(15),
-          Cell(16),
-          Cell(17),
-          Cell(18),
-          Cell(19),
-          Cell(20),
-          Cell(21),
-          Cell(22),
-          Cell(23),
-          Cell(24),
-          Cell(25),
-        ],
+        children: _cells.expand((element) => element).toList(),
       ),
     );
   }

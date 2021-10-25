@@ -47,8 +47,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            BingoCard(),
+          children: <Widget>[
+            BingoCard(const [
+              [5, 23, 39, 48, 64],
+              [9, 24, 31, 56, 70],
+              [2, 18, -1, 60, 61],
+              [14, 29, 36, 49, 69],
+              [10, 22, 33, 53, 75]
+            ]),
           ],
         ),
       ),
