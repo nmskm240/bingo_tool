@@ -1,4 +1,5 @@
 import 'package:bingo_tool/bingo_card.dart';
+import 'package:bingo_tool/bingo_card_tile.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -48,13 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            BingoCard(const [
-              [5, 23, 39, 48, 64],
-              [9, 24, 31, 56, 70],
-              [2, 18, -1, 60, 61],
-              [14, 29, 36, 49, 69],
-              [10, 22, 33, 53, 75]
-            ]),
+            BingoCardTile(),
           ],
         ),
       ),

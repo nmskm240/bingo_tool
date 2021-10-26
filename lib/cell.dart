@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class Cell extends StatefulWidget {
   final int number;
   late bool isOpen;
-  final Function? onOpened;
+  final Function(Cell)? onOpened;
   final _state = _CellState();
 
   Cell(this.number, {Key? key, this.onOpened, this.isOpen = false})
@@ -25,7 +25,7 @@ class _CellState extends State<Cell> {
         alignment: Alignment.center,
         child: Text(
           widget.number.toString(),
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
           ),
         ),
@@ -33,6 +33,7 @@ class _CellState extends State<Cell> {
       onTap: () {
         setState(() {
           widget.isOpen = true;
+          widget.onOpened!(widget);
         });
       },
     );
