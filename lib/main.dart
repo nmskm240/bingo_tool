@@ -1,6 +1,8 @@
 import 'package:bingo_tool/bingo_card.dart';
 import 'package:bingo_tool/bingo_card_tile.dart';
+import 'package:bingo_tool/open_number_form.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,11 +48,15 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            BingoCardTile(),
-          ],
+        child: ChangeNotifierProvider<OpenNumber>(
+          create: (_) => OpenNumber(-1),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              OpenNumberForm(),
+              const BingoCardTile(),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

@@ -18,7 +18,9 @@ class BingoCard extends ChangeNotifier {
       var newCells = values.map((value) => Cell(
             value,
             onOpened: (Cell cell) {
-              notifyListeners();
+              WidgetsBinding.instance!.addPostFrameCallback((_) {
+                notifyListeners();
+              });
             },
           ));
       cells[index] = newCells.toList();
